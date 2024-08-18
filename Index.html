@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycle Our Way - Family Barbecue</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Recycle Our Way</h1>
+        <p>Welcome to our family barbecue website! Let's make a difference by recycling.</p>
+    </header>
+    <main>
+        <section id="about">
+            <h2>About Our Family Barbecue</h2>
+            <p>Our family barbecue is a special get-together where we celebrate family and our commitment to recycling. Join us in making the world a better place!</p>
+          <p>Some people put recycling in the trash, thats bad for the enviroment 😭!</p>
+          <p>Please put your recycling in the garbage bag. All the recycling that you put in the bag will be donated to &copy; SarCan all your recycling matters 😀!</p>
+        </section>
+        <section id="recycling">
+            <h2>How Recycling Changes the World</h2>
+            <p>Recycling helps reduce waste, conserve natural resources, and protect the environment. By recycling, we can make a significant impact on our planet's health.</p>
+        </section>
+        <section id="photos">
+            <h2>Family Barbecue Photos</h2>
+            <div class="photo-gallery">
+                <!-- Add your photos here -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Recycle Our Way</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Slideshow functionality
+            const photos = document.querySelectorAll('.photo-gallery img');
+            let currentPhotoIndex = 0;
+
+            function showNextPhoto() {
+                photos[currentPhotoIndex].classList.remove('visible');
+                currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+                photos[currentPhotoIndex].classList.add('visible');
+            }
+
+            setInterval(showNextPhoto, 3000); // Change photo every 3 seconds
+
+            // Toggle recycling information
+            const recyclingSection = document.getElementById('recycling');
+            const toggleButton = document.createElement('button');
+            toggleButton.textContent = 'Toggle Recycling Info';
+            toggleButton.addEventListener('click', function() {
+                recyclingSection.classList.toggle('hidden');
+            });
+
+            document.body.insertBefore(toggleButton, recyclingSection);
+        });
+    </script>
+</body>
+</html>
