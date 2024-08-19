@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
     <header>
         <h1>Recycle Our Way</h1>
         <p>Welcome to our family barbecue website! Let's make a difference by recycling.</p>
@@ -15,28 +19,38 @@
         <section id="about">
             <h2>About Our Family Barbecue</h2>
             <p>Our family barbecue is a special get-together where we celebrate family and our commitment to recycling. Join us in making the world a better place!</p>
-          <p>Some people put recycling in the trash, thats bad for the enviroment 😭!</p>
-          <p>Please put your recycling in the garbage bag. All the recycling that you put in the bag will be donated to &copy; SarCan all your recycling matters 😀!</p>
+            <p>Every year, our family gathers to enjoy delicious food, fun activities, and great company. This year, we are focusing on recycling to show our love for the environment. We believe that small actions can lead to big changes, and we want to inspire everyone to recycle more.</p>
+            <p>From sorting our waste to using reusable items, we are committed to reducing our environmental footprint. Let's work together to make our barbecue not only enjoyable but also eco-friendly. We hope you will join us in this effort and make a positive impact on our planet.</p>
         </section>
         <section id="recycling">
             <h2>How Recycling Changes the World</h2>
             <p>Recycling helps reduce waste, conserve natural resources, and protect the environment. By recycling, we can make a significant impact on our planet's health.</p>
+            <p>When we recycle, we save energy and reduce greenhouse gas emissions. This helps combat climate change and preserve our planet for future generations. Recycling also reduces the need for raw materials, which means fewer trees are cut down, and less water and energy are used in manufacturing processes.</p>
+            <p>Moreover, recycling helps reduce pollution. By keeping waste out of landfills and oceans, we can protect wildlife and their habitats. Recycling also creates jobs and supports the economy by providing raw materials for new products. It's a simple yet powerful way to contribute to a sustainable future.</p>
         </section>
         <section id="photos">
-            <h2>Photos</h2>
+            <h2>Family Barbecue Photos</h2>
             <div class="photo-gallery">
                 <!-- Add your photos here -->
-<img src="https://i.postimg.cc/XvBGmcDs/IMG-1358.jpg" alt="Family Photo 1">
-<img src="https://i.postimg.cc/P59NWvrY/IMG-1359.jpg" alt="Family Photo 2">
-
             </div>
         </section>
+        <section id="search">
+            <h2>Search the Page</h2>
+            <input type="text" id="search-box" placeholder="Type to search...">
+            <button id="search-button">Search</button>
+        </section>
     </main>
-    <footer>
-        <p>Recycle Our Way</p>
-    </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Function to hide the loading screen
+            function hideLoadingScreen() {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.display = 'none';
+            }
+
+            // Hide loading screen after content is loaded
+            window.addEventListener('load', hideLoadingScreen);
+
             // Slideshow functionality
             const photos = document.querySelectorAll('.photo-gallery img');
             let currentPhotoIndex = 0;
@@ -58,6 +72,21 @@
             });
 
             document.body.insertBefore(toggleButton, recyclingSection);
+
+            // Search functionality
+            const searchBox = document.getElementById('search-box');
+            const searchButton = document.getElementById('search-button');
+
+            searchButton.addEventListener('click', function() {
+                const searchText = searchBox.value.toLowerCase();
+                const sections = document.querySelectorAll('main section');
+
+                sections.forEach(section => {
+                    const text = section.innerHTML.toLowerCase();
+                    const highlightedText = text.replace(new RegExp(searchText, 'g'), `<span class="highlight">${searchText}</span>`);
+                    section.innerHTML = highlightedText;
+                });
+            });
         });
     </script>
 </body>
